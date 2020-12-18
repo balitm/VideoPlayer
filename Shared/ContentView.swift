@@ -6,11 +6,25 @@
 //
 
 import SwiftUI
+import AVKit
 
 struct ContentView: View {
+    @State var username: String = ""
+
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        VStack {
+            VStack(alignment: .leading) {
+                TextField("Enter username...", text: $username, onEditingChanged: { (changed) in
+                    print("Username onEditingChanged - \(changed)", username)
+                }) {
+                    print("Username onCommit -", username)
+                }
+
+                Text("Your username: \(username)")
+            }.padding()
+
+            VideoPlayer(player: AVPlayer(url:  URL(string: "https://bit.ly/swswift")!))
+        }
     }
 }
 
