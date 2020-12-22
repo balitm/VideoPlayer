@@ -2,7 +2,7 @@
 //  VideoPlayerApp.swift
 //  Shared
 //
-//  Created by Balázs Kilvády on 2020. 12. 18..
+//  Created by Balázs Kilvády on 18/12/2020.
 //
 
 import SwiftUI
@@ -11,7 +11,8 @@ import SwiftUI
 struct VideoPlayerApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainView()
+                .environmentObject(UrlViewModel())
         }
     }
 }

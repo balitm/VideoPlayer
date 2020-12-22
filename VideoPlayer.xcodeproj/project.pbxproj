@@ -7,14 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		29CADD09258D0ADF0030DAE2 /* UrlViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29CADD08258D0ADF0030DAE2 /* UrlViewModel.swift */; };
+		29CADD0A258D0ADF0030DAE2 /* UrlViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29CADD08258D0ADF0030DAE2 /* UrlViewModel.swift */; };
 		29DEA39B258CFB6B005EC0D3 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DEA39A258CFB6B005EC0D3 /* Tests_iOS.swift */; };
 		29DEA3A6258CFB6B005EC0D3 /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DEA3A5258CFB6B005EC0D3 /* Tests_macOS.swift */; };
 		29DEA3A8258CFB6B005EC0D3 /* VideoPlayerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DEA37F258CFB6A005EC0D3 /* VideoPlayerApp.swift */; };
 		29DEA3A9258CFB6B005EC0D3 /* VideoPlayerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DEA37F258CFB6A005EC0D3 /* VideoPlayerApp.swift */; };
-		29DEA3AA258CFB6B005EC0D3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DEA380258CFB6A005EC0D3 /* ContentView.swift */; };
-		29DEA3AB258CFB6B005EC0D3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DEA380258CFB6A005EC0D3 /* ContentView.swift */; };
+		29DEA3AA258CFB6B005EC0D3 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DEA380258CFB6A005EC0D3 /* PlayerView.swift */; };
+		29DEA3AB258CFB6B005EC0D3 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DEA380258CFB6A005EC0D3 /* PlayerView.swift */; };
 		29DEA3AC258CFB6B005EC0D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29DEA381258CFB6B005EC0D3 /* Assets.xcassets */; };
 		29DEA3AD258CFB6B005EC0D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29DEA381258CFB6B005EC0D3 /* Assets.xcassets */; };
+		29DEA3C5258D0414005EC0D3 /* UrlEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DEA3C4258D0414005EC0D3 /* UrlEditor.swift */; };
+		29DEA3C6258D0414005EC0D3 /* UrlEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DEA3C4258D0414005EC0D3 /* UrlEditor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,8 +39,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		29CADD08258D0ADF0030DAE2 /* UrlViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlViewModel.swift; sourceTree = "<group>"; };
 		29DEA37F258CFB6A005EC0D3 /* VideoPlayerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerApp.swift; sourceTree = "<group>"; };
-		29DEA380258CFB6A005EC0D3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		29DEA380258CFB6A005EC0D3 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		29DEA381258CFB6B005EC0D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		29DEA386258CFB6B005EC0D3 /* VideoPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VideoPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29DEA389258CFB6B005EC0D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,6 +54,7 @@
 		29DEA3A1258CFB6B005EC0D3 /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		29DEA3A5258CFB6B005EC0D3 /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		29DEA3A7258CFB6B005EC0D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		29DEA3C4258D0414005EC0D3 /* UrlEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlEditor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +89,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		29CADD13258D14FA0030DAE2 /* PlayerScene */ = {
+			isa = PBXGroup;
+			children = (
+				29DEA380258CFB6A005EC0D3 /* PlayerView.swift */,
+			);
+			path = PlayerScene;
+			sourceTree = "<group>";
+		};
 		29DEA379258CFB6A005EC0D3 = {
 			isa = PBXGroup;
 			children = (
@@ -98,8 +112,9 @@
 		29DEA37E258CFB6A005EC0D3 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				29CADD13258D14FA0030DAE2 /* PlayerScene */,
+				29DEA3CB258D0425005EC0D3 /* UrlScene */,
 				29DEA37F258CFB6A005EC0D3 /* VideoPlayerApp.swift */,
-				29DEA380258CFB6A005EC0D3 /* ContentView.swift */,
 				29DEA381258CFB6B005EC0D3 /* Assets.xcassets */,
 			);
 			path = Shared;
@@ -149,6 +164,15 @@
 				29DEA3A7258CFB6B005EC0D3 /* Info.plist */,
 			);
 			path = "Tests macOS";
+			sourceTree = "<group>";
+		};
+		29DEA3CB258D0425005EC0D3 /* UrlScene */ = {
+			isa = PBXGroup;
+			children = (
+				29DEA3C4258D0414005EC0D3 /* UrlEditor.swift */,
+				29CADD08258D0ADF0030DAE2 /* UrlViewModel.swift */,
+			);
+			path = UrlScene;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -308,7 +332,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				29DEA3AA258CFB6B005EC0D3 /* ContentView.swift in Sources */,
+				29CADD09258D0ADF0030DAE2 /* UrlViewModel.swift in Sources */,
+				29DEA3AA258CFB6B005EC0D3 /* PlayerView.swift in Sources */,
+				29DEA3C5258D0414005EC0D3 /* UrlEditor.swift in Sources */,
 				29DEA3A8258CFB6B005EC0D3 /* VideoPlayerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -317,7 +343,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				29DEA3AB258CFB6B005EC0D3 /* ContentView.swift in Sources */,
+				29CADD0A258D0ADF0030DAE2 /* UrlViewModel.swift in Sources */,
+				29DEA3AB258CFB6B005EC0D3 /* PlayerView.swift in Sources */,
+				29DEA3C6258D0414005EC0D3 /* UrlEditor.swift in Sources */,
 				29DEA3A9258CFB6B005EC0D3 /* VideoPlayerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
