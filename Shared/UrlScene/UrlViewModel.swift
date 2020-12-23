@@ -5,7 +5,7 @@
 //  Created by Balázs Kilvády on 12/18/20.
 //
 
-import UIKit
+import Foundation
 import Combine
 
 private let _defaultURLString = "https://bit.ly/swswift"
@@ -13,6 +13,7 @@ private let _defaultURLString = "https://bit.ly/swswift"
 class UrlViewModel: ObservableObject {
     // Input
     @Published var urlString = _defaultURLString
+    @Published var isShowPlayer = false
 
     // Output
     @Published var url: URL = URL(string: _defaultURLString)!
