@@ -12,36 +12,59 @@ struct MainView: View {
 
     var body: some View {
         if _viewModel.isShowPlayer {
+            #if os(iOS)
             PlayerView()
                 .statusBar(hidden: _viewModel.isShowPlayer)
+            #else
+            PlayerView()
+            #endif
         } else {
-            VStack(alignment: .leading, spacing: 0) {
-                Text("Enter URL:")
-                    .font(.caption)
-                    .padding(.leading, 16)
-                    .foregroundColor(.secondary)
-                _UrlEditor(urlString: $_viewModel.urlString,
-                           isShowPlayer: $_viewModel.isShowPlayer)
-                HStack(alignment: .center) {
-                    Button {
-                        withAnimation {
-                            _viewModel.isShowPlayer = true
-                        }
-                    } label: {
-                        Image(systemName: "play.fill")
-                            .padding(.all, 10)
-                    }
-                    .disabled(!_viewModel.isValid)
-                    // .background(Color.red)
-                    Spacer()
-                    Image(systemName: _viewModel.isValid ? "checkmark" : "exclamationmark")
-                        .foregroundColor(_viewModel.isValid ? .green : .red)
-                }
-                .padding(EdgeInsets(top: 0, leading: 6, bottom: 0, trailing: 16))
-            }
-            .statusBar(hidden: _viewModel.isShowPlayer)
-                .preferredColorScheme(.dark)
+            #if os(iOS)
+            _mainBody
+                .statusBar(hidden: _viewModel.isShowPlayer)
+            #else
+            _mainBody
+                .frame(minWidth: 200, idealWidth: 400, maxWidth: .infinity,
+                       minHeight: 98, idealHeight: 98, maxHeight: 98)
+            #endif
         }
+    }
+
+    private var _mainBody: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            Text("Enter URL:")
+                .font(.caption)
+                // .padding(.leading, 16)
+                .foregroundColor(.secondary)
+            _UrlEditor(urlString: $_viewModel.urlString,
+                       isShowPlayer: $_viewModel.isShowPlayer)
+            HStack(alignment: .center) {
+                Button {
+                    withAnimation {
+                        _viewModel.isShowPlayer = true
+                    }
+                } label: {
+                    _playButtonLabel
+                }
+                .disabled(!_viewModel.isValid)
+                // .background(Color.red)
+                Spacer()
+                Image(systemName: _viewModel.isValid ? "checkmark" : "exclamationmark")
+                    .foregroundColor(_viewModel.isValid ? .green : .red)
+            }
+            // .padding(EdgeInsets(top: 0, leading: 6, bottom: 0, trailing: 16))
+            .preferredColorScheme(.dark)
+        }
+        .padding(16)
+    }
+
+    private var _playButtonLabel: some View {
+        #if os(iOS)
+        return Image(systemName: "play.fill")
+            .padding(.all, 10)
+        #else
+        return Image(systemName: "play.fill")
+        #endif
     }
 }
 
@@ -61,14 +84,19 @@ private struct _UrlEditor: View {
                 _isShowPlayer = true
             })
         }
-        .padding(EdgeInsets(top: 4, leading: 16, bottom: 8, trailing: 16))
+        .padding(EdgeInsets(top: 4, leading: 0, bottom: 8, trailing: 0))
     }
 }
 
 struct UrlEditor_Previews: PreviewProvider {
     static var previews: some View {
-        MainView()
-            .preferredColorScheme(.dark)
-            .environmentObject(UrlViewModel())
+        Group {
+            MainView()
+                .preferredColorScheme(.dark)
+                .environmentObject(UrlViewModel())
+            MainView()
+                .preferredColorScheme(.dark)
+                .environmentObject(UrlViewModel())
+        }
     }
 }
