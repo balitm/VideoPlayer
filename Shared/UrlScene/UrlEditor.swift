@@ -26,6 +26,7 @@ struct UrlEditor: View {
                     _playButtonLabel
                 }
                 .disabled(!_viewModel.isValid)
+                .buttonStyle(VideoPlayerButtonStyle())
                 Spacer()
                 Image(systemName: _viewModel.isValid ? "checkmark" : "exclamationmark")
                     .foregroundColor(_viewModel.isValid ? .green : .red)
@@ -36,11 +37,12 @@ struct UrlEditor: View {
     }
 
     private var _playButtonLabel: some View {
+        let imageView = Image(systemName: "play.fill")
         #if os(iOS)
-        return Image(systemName: "play.fill")
+        return imageView
             .padding(.all, 10)
         #else
-        return Image(systemName: "play.fill")
+        return imageView
         #endif
     }
 }
