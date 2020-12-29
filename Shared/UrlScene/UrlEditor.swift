@@ -1,47 +1,49 @@
 //
-//  UrlEditor.swift
+//  MainView.swift
 //  VideoPlayer
 //
-//  Created by Balázs Kilvády on 12/18/20.
+//  Created by Balázs Kilvády on 12/28/20.
 //
 
 import SwiftUI
 
-struct MainView: View {
+struct UrlEditor: View {
     @EnvironmentObject private var _viewModel: UrlViewModel
 
     var body: some View {
-        if _viewModel.isShowPlayer {
-            PlayerView()
-                .statusBar(hidden: _viewModel.isShowPlayer)
-        } else {
-            VStack(alignment: .leading, spacing: 0) {
-                Text("Enter URL:")
-                    .font(.caption)
-                    .padding(.leading, 16)
-                    .foregroundColor(.secondary)
-                _UrlEditor(urlString: $_viewModel.urlString,
-                           isShowPlayer: $_viewModel.isShowPlayer)
-                HStack(alignment: .center) {
-                    Button {
-                        withAnimation {
-                            _viewModel.isShowPlayer = true
-                        }
-                    } label: {
-                        Image(systemName: "play.fill")
-                            .padding(.all, 10)
+        VStack(alignment: .leading, spacing: 0) {
+            Text("Enter URL:")
+                .font(.caption)
+                .foregroundColor(.secondary)
+            _UrlEditor(urlString: $_viewModel.urlString,
+                       isShowPlayer: $_viewModel.isShowPlayer)
+            HStack(alignment: .center) {
+                Button {
+                    withAnimation {
+                        _viewModel.isShowPlayer = true
                     }
-                    .disabled(!_viewModel.isValid)
-                    // .background(Color.red)
-                    Spacer()
-                    Image(systemName: _viewModel.isValid ? "checkmark" : "exclamationmark")
-                        .foregroundColor(_viewModel.isValid ? .green : .red)
+                } label: {
+                    _playButtonLabel
                 }
-                .padding(EdgeInsets(top: 0, leading: 6, bottom: 0, trailing: 16))
+                .disabled(!_viewModel.isValid)
+                .buttonStyle(VideoPlayerButtonStyle())
+                Spacer()
+                Image(systemName: _viewModel.isValid ? "checkmark" : "exclamationmark")
+                    .foregroundColor(_viewModel.isValid ? .green : .red)
             }
-            .statusBar(hidden: _viewModel.isShowPlayer)
-                .preferredColorScheme(.dark)
+            .preferredColorScheme(.dark)
         }
+        .padding(16)
+    }
+
+    private var _playButtonLabel: some View {
+        let imageView = Image(systemName: "play.fill")
+        #if os(iOS)
+        return imageView
+            .padding(.all, 10)
+        #else
+        return imageView
+        #endif
     }
 }
 
@@ -61,14 +63,13 @@ private struct _UrlEditor: View {
                 _isShowPlayer = true
             })
         }
-        .padding(EdgeInsets(top: 4, leading: 16, bottom: 8, trailing: 16))
+        .padding(EdgeInsets(top: 4, leading: 0, bottom: 8, trailing: 0))
     }
 }
 
 struct UrlEditor_Previews: PreviewProvider {
     static var previews: some View {
-        MainView()
-            .preferredColorScheme(.dark)
+        UrlEditor()
             .environmentObject(UrlViewModel())
     }
 }

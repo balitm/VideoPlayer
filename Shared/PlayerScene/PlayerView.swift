@@ -21,18 +21,25 @@ struct PlayerView: View {
                         _viewModel.isShowPlayer = false
                     }
                 } label: {
-                    Image(systemName: "chevron.left")
-                        .font(.system(size: 15, weight: .semibold))
-                        .foregroundColor(.white)
-                        .padding(.all, 16)
+                    _backButtonLabel
                 }
-                .background(Color.white.opacity(0.141))
-                .clipShape(Capsule())
+                .buttonStyle(VideoPlayerButtonStyle())
                 .padding(.top, 8)
 
                 Spacer()
             }
         }
+    }
+
+    private var _backButtonLabel: some View {
+        let imageView = Image(systemName: "chevron.left")
+            .font(.system(size: 15, weight: .semibold))
+        #if os(iOS)
+        return imageView
+            .padding(.all, 14)
+        #else
+        return imageView
+        #endif
     }
 }
 
